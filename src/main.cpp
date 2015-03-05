@@ -1,12 +1,19 @@
 #include "main.h"
-#include <algorithm>
-#include <typeinfo>
-#include <type_traits>
 
 using namespace std;
 
 int main()
 {
+    for (auto line : File::get_lines("in.txt")) 
+    {
+        split(line, ' ') 
+            | m_stoi 
+            | [](int e) -> bool { return e != 0; } 
+            | [](int e) -> int { return e - 1; }
+            | [](int e) -> void { cout << e << " "; };
+        cout << endl;
+    }
+    
 	const int arr[] = {1, 2, 3, 4, 10, 40, 928};
 	vector<int> vectors(arr, arr + sizeof(arr) / sizeof(arr[0]));
 	

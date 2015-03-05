@@ -75,20 +75,14 @@ auto operator|(vector<T> ins, F f)
 
 #pragma mark - functions example
 
-vector<int> split(string line)
+vector<string> split(string s, char delim) 
 {
-	vector<int> ints;
-	istringstream iss(line);
-	while (true)
-	{
-		string sub;
-		iss >> sub;
-		int i = stoi(sub);
-		if (i == 0)
-			break;
-		ints.push_back(stoi(sub) - 1);
-	}
-	return ints;
+	vector<string> elems;
+	std::stringstream ss(s);
+    std::string item;
+    while (getline(ss, item, delim)) 
+        elems.push_back(item);
+    return elems;
 }
 
 static int m_sqr(int i) {
